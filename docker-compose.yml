@@ -1,0 +1,37 @@
+services:
+  db:
+    image: mysql:8.0
+    container_name: mysql-springjpa
+    restart: always
+    environment:
+      MYSQL_DATABASE: springjpatutorial
+      MYSQL_ROOT_PASSWORD: '1234'
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    # Verifica se o MySQL já aceita conexões antes de liberar o Spring
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p1234"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  app:
+    build: .
+    container_name: springboot-app
+    restart: always
+    ports:
+      - "8082:8082"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/springjpatutorial?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: '1234'
+      SPRING_JPA_GENERATE_DDL: 'true'
+      SPRING_JPA_DDL_AUTO: update
+    depends_on:
+      db:
+        condition: service_healthy # Só inicia a app quando o banco estiver "healthy"
+
+volumes:
+  mysql_data:
