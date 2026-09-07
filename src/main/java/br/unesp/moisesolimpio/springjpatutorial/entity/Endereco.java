@@ -1,16 +1,27 @@
 package br.unesp.moisesolimpio.springjpatutorial.entity;
 
+import java.io.Serializable;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+@Entity(name = "Endereco")
 @Getter 
 @Setter 
 @EqualsAndHashCode 
 @ToString 
-public class Endereco {
+public class Endereco implements Serializable {
     
+    private static final long serialVersionUID = 1L;
+
+    @Id 
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long idEndereco;
     private String rua;
     private int numero;

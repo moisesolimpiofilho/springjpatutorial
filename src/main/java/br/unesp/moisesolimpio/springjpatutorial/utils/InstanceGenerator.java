@@ -1,4 +1,4 @@
-package br.unesp.moisesolimpio.utils;
+package br.unesp.moisesolimpio.springjpatutorial.utils;
 
 import java.util.Date;
 

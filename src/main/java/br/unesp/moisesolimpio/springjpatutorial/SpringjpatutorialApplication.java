@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import br.unesp.moisesolimpio.springjpatutorial.entity.Fisica;
-import br.unesp.moisesolimpio.utils.InstanceGenerator;
+import br.unesp.moisesolimpio.springjpatutorial.utils.InstanceGenerator;
 
 @SpringBootApplication
 public class SpringjpatutorialApplication implements CommandLineRunner {
