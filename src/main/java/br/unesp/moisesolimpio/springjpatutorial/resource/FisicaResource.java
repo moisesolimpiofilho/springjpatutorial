@@ -6,12 +6,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.unesp.moisesolimpio.springjpatutorial.dto.FisicaDTO;
+import br.unesp.moisesolimpio.springjpatutorial.dto.assembler.FisicaAssembler;
 import br.unesp.moisesolimpio.springjpatutorial.entity.Fisica;
 import br.unesp.moisesolimpio.springjpatutorial.service.FisicaService;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 
 
@@ -44,6 +49,20 @@ public class FisicaResource {
         }
 
         return delete;
+    }
+    
+    @PostMapping("/")
+    public boolean saveFisica(@RequestBody FisicaDTO fisicaDTO) {
+        boolean insert = false;
+
+        Fisica fisica = FisicaAssembler.dtoToEntityModel(fisicaDTO);
+        Fisica fisicaInsert = fisicaService.save(fisica);
+
+        if (fisicaInsert != null) {
+            insert = true;
+        }
+        
+        return insert;
     }
     
     
