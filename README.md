@@ -39,11 +39,13 @@ O projeto explora o mapeamento objeto-relacional (ORM) com **Spring Data JPA**, 
     │   │       │   ├── ☕ Fisica.java
     │   │       │   ├── ☕ Juridica.java
     │   │       │   └── ☕ Pessoa.java
-    │   │       ├── 📂 repository             # Interfaces Spring Data JPA Repositories
+    │   │       ├── 📂 repository             
     │   │       │   └── ☕ FisicaRepository.java
-    │   │       ├── 📂 service                # Camada de regras de negócio
+    │   │       ├── 📂 resource             
+    │   │       │   └── ☕ FisicaResource.java
+    │   │       ├── 📂 service                
     │   │       │   └── ☕ FisicaService.java
-    │   │       ├── 📂 utils                  # Classes utilitárias e geradores
+    │   │       ├── 📂 utils                  
     │   │       │   └── ☕ InstanceGenerator.java
     │   │       └── ☕ SpringjpatutorialApplication.java
     │   └── 📂 resources
