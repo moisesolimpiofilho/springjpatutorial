@@ -2,7 +2,6 @@ package br.unesp.moisesolimpio.springjpatutorial.resource;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,8 +23,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 @RequestMapping("/entidade/v1")
 public class FisicaResource {
 
-    @Autowired 
-    private FisicaService fisicaService;
+    private final FisicaService fisicaService;
+
+    FisicaResource(FisicaService fisicaService) {
+        this.fisicaService = fisicaService;
+    }
 
     @GetMapping("/")
     public List<Fisica> getAllFisica() {

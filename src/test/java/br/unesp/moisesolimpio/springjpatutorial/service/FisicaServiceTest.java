@@ -8,10 +8,10 @@ import java.util.List;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import br.unesp.moisesolimpio.springjpatutorial.entity.Fisica;
+import br.unesp.moisesolimpio.springjpatutorial.repositoty.FisicaRepository;
 import br.unesp.moisesolimpio.springjpatutorial.utils.InstanceGenerator;
 
 @SpringBootTest 
@@ -19,8 +19,12 @@ public class FisicaServiceTest {
 
     private Fisica entity;
 
-    @Autowired 
-    private FisicaService fs = new FisicaService();
+    private final FisicaRepository repository;
+
+    public FisicaServiceTest(FisicaRepository repository) {
+        this.repository = repository;
+
+    }
 
     @Disabled 
     @Test
@@ -38,7 +42,7 @@ public class FisicaServiceTest {
         System.out.println("-----------------------------------------------");
         System.out.println("Resultado do findAll:");
         System.out.println("-----------------------------------------------");
-        List<Fisica> result = fs.findAll();
+        List<Fisica> result = this.repository.findAll();
 
         for (Fisica f: result) {
             System.out.println("-----------------------------------------------");
@@ -56,7 +60,7 @@ public class FisicaServiceTest {
         entity = InstanceGenerator.getPessoaFisica("222.333.444-55", "user1");
 
         String cpf = "222.333.444-55";
-        Fisica f = fs.findByCpf(cpf);
+        Fisica f = this.repository.findByCpf(cpf);
         System.out.println("-----------------------------------------------");
         System.out.println("Resultado do findByCpf");
         System.out.println("-----------------------------------------------");
@@ -71,7 +75,7 @@ public class FisicaServiceTest {
         entity = InstanceGenerator.getPessoaFisica("222.333.444-55", "user1");
         System.out.println(entity);
 
-        Fisica f = fs.save(entity);
+        Fisica f = this.repository.save(entity);
         System.out.println("-----------------------------------------------");
         System.out.println(f);
         System.out.println("-----------------------------------------------");

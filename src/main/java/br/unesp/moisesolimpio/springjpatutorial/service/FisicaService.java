@@ -3,7 +3,6 @@ package br.unesp.moisesolimpio.springjpatutorial.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import br.unesp.moisesolimpio.springjpatutorial.entity.Fisica;
@@ -12,10 +11,10 @@ import br.unesp.moisesolimpio.springjpatutorial.repositoty.FisicaRepository;
 @Component 
 public class FisicaService {
     
-    @Autowired 
-    private FisicaRepository repository;
+    private final FisicaRepository repository;
 
-    public FisicaService() {
+    public FisicaService(FisicaRepository repository) {
+        this.repository = repository;
 
     }
 
