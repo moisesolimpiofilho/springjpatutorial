@@ -120,3 +120,38 @@ curl -X POST http://localhost:8082/entidade/v1/ \
 ```bash
 curl -i -X DELETE http://localhost:8082/entidade/v1/{cpf}
 ```
+
+### Atualizar uma entidade, usar o formato abaixo
+```bash
+curl -X PUT http://localhost:8082/entidade/v1/ \
+  -H "Content-Type: application/json" \
+  -d '{
+    "usuario": "springBoot231",
+    "senha": "123mudar",
+    "telefoneResidencial": "3333-4444",
+    "telefoneComercial": "3333-5555",
+    "celular": "98888-7777",
+    "email": "juca@chaves.com.br",
+    "nome": "Juca Chaves",
+    "cpf": "311.222.333-41",
+    "dataNascimento": "2020-07-24T11:58:58.911-0300",
+    "endereco": [
+      {
+        "rua": "Avenida 24A",
+        "numero": 1515,
+        "bairro": "Bela Vista",
+        "cep": "13506-900",
+        "cidade": "Rio Claro",
+        "estado": "SP"
+      },
+      {
+        "rua": "Avenida 24A",
+        "numero": 1515,
+        "bairro": "Bela Vista",
+        "cep": "13506-900",
+        "cidade": "Rio Claro",
+        "estado": "SP"
+      }
+    ]
+  }'
+```
